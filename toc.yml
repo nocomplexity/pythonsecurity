@@ -1,0 +1,58 @@
+version: 1
+project:
+  toc:
+    - file: intro.md
+    - file: introduction.md
+    
+   
+    
+    - file: fundamentals/fundamentals_intro.md #section Fundamentals 
+      children: #dropdown menu
+        - file: fundamentals/executionmodel.md
+        - file: fundamentals/bytecode.md
+        - file: fundamentals/threatmodel.md
+        - file: fundamentals/attacklandscape.md
+        - file: fundamentals/dependencies.md
+        - file: fundamentals/whatissast.md
+        - file: fundamentals/enhancedsecurity.md
+        - file: fundamentals/isolated_mode.md
+        - file: fundamentals/ai_security.md
+        - file: fundamentals/vulnerabilityscanning.md
+        - file: fundamentals/sast_vs_vulnerabilityscan.md
+        
+
+    - file: securitytools/tools_intro.md
+      children: #dropdown menu
+        - file: securitytools/opensourceinsights.md
+        - file: securitytools/pip_audit.md
+        - file: securitytools/codeaudit.md
+        - file: securitytools/complexitycheck.md
+        - file: securitytools/osv.md
+    
+    - file: guidelines/guidelines_intro.md 
+      children:
+        - file: guidelines/secure_use.md
+        - file: guidelines/securecoding.md
+        - file: guidelines/validatetips.md
+        - file: guidelines/securityprinciples.md
+
+    - title: Python Security Recipes
+      children:
+        - file: recipes/openfile.md
+        - file: recipes/traversalattacks.md
+        - file: recipes/path_module.md
+        - file: recipes/assert_use.md
+        - file: recipes/data_egress.md
+
+    - title: Appendices #section header, no page
+      children:
+        - file: appendices/definitions.md
+        - file: appendices/references.md
+
+    - title: About #section header, no page
+      children:
+        - file: help.md
+        - file: contribute.md
+        - file: sponsors.md
+        - file: license.md
+        - file: aboutnocx.md
