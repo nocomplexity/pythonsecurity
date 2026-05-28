@@ -7,6 +7,7 @@
 
 This open-source book covers **Python Security Fundamentals** with a strong focus on real-world practices, essential security tools, and actionable security recipes.
 
+
 ## What You'll Learn
 
 - Core security principles every Python developer should know
@@ -30,7 +31,7 @@ This open-source book covers **Python Security Fundamentals** with a strong focu
 ## Tools Featured
 
 - **[Python Code Audit](https://github.com/nocomplexity/codeaudit)** – Best-in-class open-source Python SAST scanner
-- Dependency scanners (pip-audit, uv, etc.)
+- Dependency scanners (pip-audit, Open Source Insights , etc.)
 - And other essential security tools
 
 ## How to Read This Book
