@@ -3,8 +3,7 @@
 **A practical, no-nonsense guide to writing secure Python code in 2026 and beyond.**
 
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
-![License](https://img.shields.io/github/license/nocomplexity/pythonsecurity)
-![Stars](https://img.shields.io/github/stars/nocomplexity/pythonsecurity)
+[![PythonCodeAudit Badge](https://img.shields.io/badge/Python%20Code%20Audit-Security%20Verified-FF0000?style=flat-square)](https://github.com/nocomplexity/codeaudit)
 
 This open-source book covers **Python Security Fundamentals** with a strong focus on real-world practices, essential security tools, and actionable security recipes.
 
