@@ -23,7 +23,7 @@ The primary advantage of SAST for Python is automation. SAST tools automatically
 
 * **Limitation**: No single tool, even one powered by AI, can definitively know the exact environment or business context in which the Python code runs. Therefore, fully automating the fix process is generally undesirable. While AI can suggest and even generate fixes, only a human developer or security professional can accurately weigh the development costs against the actual security risks and confirm that the change won't introduce new functional bugs or operational failures.
 
-![Overview of SAST testing for Python](https://nocomplexity.com/wp-content/uploads/2025/10/Python_SAST.png)
+![Overview of SAST testing for Python](../images/python_sast.png)
 
 :::{important} 
 SAST validation is crucial — but it is only part of the picture.
