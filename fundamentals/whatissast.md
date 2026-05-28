@@ -11,7 +11,7 @@ Static security testing, also known as Static Application Security Testing (SAST
 
 For Python applications, specific Python SAST tools perform an in-depth, automated review of the source code to detect security weaknesses and potential vulnerabilities early in the development lifecycle.
 
-SAST testing is a "white-box" testing approach because it analyzes the application's internal structure, typically by examining the code directly. Dynamic application testing is more complex and often only sensible within the target context where an application will run! For dynamic application testing so called fuzzers are used.
+SAST testing is a "white-box" testing approach because it analyzes the application's internal structure, typically by examining the code directly. Dynamic application testing is more complex and often only sensible within the target context where an application will run! For dynamic application testing so called fuzzers are used. 
 
 ## How SAST works on Python Code
 
