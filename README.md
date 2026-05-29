@@ -2,8 +2,11 @@
 
 **A practical, no-nonsense guide to writing secure Python code in 2026 and beyond.**
 
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
 [![PythonCodeAudit Badge](https://img.shields.io/badge/Python%20Code%20Audit-Security%20Verified-FF0000?style=flat-square)](https://github.com/nocomplexity/codeaudit)
+[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-blue.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![Jupyter Book](https://img.shields.io/badge/Built%20with-Jupyter%20Book-blue)](https://jupyterbook.org/)
+
 
 This open-source book covers **Python Security Fundamentals** with a strong focus on real-world practices, essential security tools, and actionable security recipes.
 
@@ -41,7 +44,7 @@ You can read the book online at:
 
 ## Contributing
 
-Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Contributions are welcome! See [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 Simple ways to help:
 - Star the repository
@@ -51,12 +54,12 @@ Simple ways to help:
 
 ## License
 
-This book is licensed under **CC-BY 4.0** – you are free to share and adapt with attribution.
+This book is licensed under [**CC-BY 4.0**](license.md) – you are free to share and adapt with attribution.
 
 ---
 
 **Made with ❤️ to [Simplify Cyber Security](https://nocomplexity.com/simplifysecurity-manifesto/) Challenges**
 
 Want to support the project? Consider [sponsoring](sponsors.md) or making a [donation](contribute.md).
-```
+
 

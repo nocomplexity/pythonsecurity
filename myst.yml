@@ -11,7 +11,7 @@ project:
   # github:  
   license:
     content: CC-BY-SA-4.0
-  github: https://github.com/nocomplexity/securitytesting # Change this URL to your GitHub repository - By default edit_url is activated?
+  github: https://github.com/nocomplexity/pythonsecurity # Change this URL to your GitHub repository - By default edit_url is activated?
   #edit_url: 
 
 extends:
