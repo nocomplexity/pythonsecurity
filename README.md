@@ -24,9 +24,10 @@ This open-source book covers **Python Security Fundamentals** with a strong focu
 
 ## Key Features
 
-- **Fundamentals First** – Clear explanations of weaknesses, vulnerabilities, and threats
+- **Fundamentals First** – Clear explanations of specific Python weaknesses, vulnerabilities, and threats
+- **Secure Coding Guidelines** - The best maintained collection of guidelines to create secure Python applications
 - **Practical Recipes** – Ready-to-use, secure code patterns
-- **Tool Recommendations** – Focused on the best Free and Open Source (FOSS) tools
+- **Tool Recommendations** – Focused on using the best Free and Open Source (FOSS) tools
 - **Realistic Advice** – Balanced between theory and production reality
 - **Regularly Updated** – Keeping pace with the evolving Python and security landscape
 
