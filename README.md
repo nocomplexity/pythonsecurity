@@ -7,6 +7,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![Jupyter Book](https://img.shields.io/badge/Built%20with-Jupyter%20Book-blue)](https://jupyterbook.org/)
 
+![bookcover](images/bookcover_small.png) 
 
 This open-source book covers **Python Security Fundamentals** with a strong focus on real-world practices, essential security tools, and actionable security recipes.
 
