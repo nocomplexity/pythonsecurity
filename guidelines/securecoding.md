@@ -116,5 +116,5 @@ The [use of AI tools](https://nocomplexity.com/documents/simplifysecurity/useais
 
 
 :::{hint} 
-If you wish to provide feedback or suggest improvements to these guidelines, please open a [GitHub issue](https://github.com/nocomplexity/codeaudit). See also [section Help](help) if you want to contribute to this project!
+If you wish to provide feedback or suggest improvements to these guidelines, please open a [GitHub issue](https://github.com/nocomplexity/pythonsecurity). See also [section Help](help) if you want to contribute to this project!
 :::
