@@ -45,6 +45,13 @@ Below the core high level Python Treat model:
 
 ![python threat model](../images/threatmodel.png)
 
+In strict security engineering, a weakness and a vulnerability are not the same thing.
+
+- Weakness ([CWE)](https://cwe.mitre.org/index.html)): This is a type of flaw, mistake, or bug in software, hardware, or system architecture. It is an internal characteristic of the code or design (e.g., "failing to validate user input" or "using a weak encryption algorithm"). A weakness exists in a vacuum, regardless of whether it is deployed or targeted.
+
+- Vulnerability [(CVE)](https://www.cve.org/About/Overview): This occurs when a weakness is actually present in a specific, deployable system, and an attacker can realistically exploit it to cause harm.
+
+A weakness is Python code can become a vulnerability only when it exists in a real-world environment where it is reachable and exploitable by a threat.
 
 
 ## STRIDE Threat Model

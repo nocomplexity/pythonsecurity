@@ -139,6 +139,8 @@ To use a Python SAST scanner effectively, it is vital to understand the differen
 **Weakness (or potential security issue):**  
 A weakness is a flaw, error, poor design choice, or unsafe programming practice in your code that *might* create security problems under certain conditions. It represents an increased risk, but it is not necessarily exploitable in your specific context.
 
+Weaknesses do not create or lead to threats; rather, they act as an open door for existing threats.
+
 Examples in Python:
 
 - Using `eval()` on user input. This is a weakness because it allows arbitrary code execution **if** misused.
@@ -154,7 +156,16 @@ A vulnerability is a weakness that can be **actually exploited** by an attacker 
 
 :::{important}
 A weakness becomes a vulnerability only when the right conditions, inputs, and attacker capabilities align. Many weaknesses remain harmless in practice, while others can become critical depending on how and where the application runs.
+
+So: Weaknesses lead to vulnerabilities, not threats.
 :::
+
+Example:
+1. A developer introduces a Weakness (e.g., forgets to sanitize inputs).
+2. Because this code is deployed in a live environment, it becomes a Vulnerability (an open door).
+3. A Threat (the hacker) discovers the vulnerability and exploits it.
+4. This results in a Security Incident or breach. But this security incident can be **prevented** when using a Python SAST tool before deployment. 
+
 
 ### Why This Distinction Matters
 
