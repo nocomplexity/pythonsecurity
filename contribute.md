@@ -24,7 +24,8 @@ This is an open-source project, and contributions from the community are warmly 
 The easiest way to contribute is to **open an issue** or suggest an edit on a specific page.
 
 - Click the GitHub edit icon in the top-right corner of any page to propose changes directly.  
-  ![Edit Suggestion](images/edit_suggestion.png)
+
+![Edit Suggestion](images/edit_suggestion.png)
 
 ### Spread the Word
 Help others discover the book by sharing it with colleagues, students, or on social media:
@@ -56,3 +57,18 @@ Every contribution — no matter how small — helps improve the quality and rea
 :::{include} donate.md
 
 :::
+
+(contributors)=
+## Contributors
+
+The following people have contributed their expertise to make the world — partly powered by Python software — a bit more secure by contributing to this *Python Security Handbook*.
+
+Thank you to everyone who has helped improve the security of the Python ecosystem!
+
+
+[name or alias] [OPTIONAL: Website] [OPTIONAL: Organisation name]
+
+- Fiona
+- Albert
+
+If you would like your name to appear here: this publication is open source [(CC BY-SA)](license). Issues and pull requests are welcome! All contributors will be added to this list.

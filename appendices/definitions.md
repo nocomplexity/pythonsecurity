@@ -22,6 +22,7 @@ A Python module is a single `.py` file (or compiled equivalent) containing Pytho
 **Python Library**  
 The term “library” has no strict formal definition in Python. It is commonly used interchangeably with “module” or “package”. The **Python Standard Library** is the best-known example of a Python library.
 
+(PSL)=
 **Python Standard Library (PSL)**  
 The Python Standard Library is the collection of modules and packages included with every standard Python installation. It provides broad functionality for common tasks (file I/O, networking, cryptography, data processing, etc.), making Python a “batteries-included” language. While generally robust, certain functions within the PSL can introduce security weaknesses depending on how they are used.
 

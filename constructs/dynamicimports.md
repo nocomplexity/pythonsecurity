@@ -1,0 +1,156 @@
+# Dynamic Import Statements
+
+:::{danger}
+Using dynamic imports is a weakness and leads to security vulnerabilities!
+:::
+
+Dynamic imports are especially dangerous if you cannot validate upfront what is being imported.
+
+Dynamic imports can be achieved using:
+* `__import__`: This built-in function **SHOULD** never be used. It is an advanced, low-level function that is not needed in everyday Python programming.
+* `importlib.import_module()`: If dynamic imports are unavoidable, this function is the preferred approach. However, its use must be validated upfront.
+
+## Security concerns
+
+Dynamic imports present a potential security issue, particularly when the module name originates from an untrusted source. Common risky scenarios include:
+
+- Modules fetched from the internet based on user input
+- Clever user input constructs in the code that influence module names
+- Attackers importing the `os` module and subsequently calling functions to execute system commands
+
+:::{caution}
+Allowing dynamic module imports makes it easy for attackers to execute arbitrary code.
+:::
+
+### Why `importlib.import_module()` is preferred over `__import__`
+
+| Aspect | `__import__` | `importlib.import_module()` |
+|--------|--------------|----------------------------|
+| Purpose | Low-level, legacy function | Modern, explicit API |
+| Readability | Obscure, looks like a magic method | Clear, self-documenting name |
+| Maintainability | Discouraged for general use | Actively maintained by core Python developers |
+| Security | No built-in safeguards | Same risks but cleaner interface |
+
+:::{tip}
+If your Python code or package truly must use dynamic module imports, use:
+```python
+import importlib
+module = importlib.import_module("module_name")
+```
+Avoid using `__import__()` entirely.
+:::
+
+## Mitigations
+
+There is **always** a security risk when `importlib.import_module()` is used. No mitigation eliminates this risk entirely — it can only be reduced.
+
+Possible mitigations:
+
+1. **Use static analysis tools**: Always use a [Python code audit tool](https://nocomplexity.com/codeaudit/) with module scanning options for all modules within a file.
+
++++
+
+2. **Pre-audit all possible imports** : Check and understand what will be imported and what security risks are involved. You **MUST** never trust that dynamic imports are safe. Most are not!
+
++++
+
+
+3. **Review API design** – Check whether your Python program has or truly needs an API to download or import modules dynamically. Often, a static approach can replace the dynamic one.
+
++++
+
+
+4. **Seek expert review** – If you do not trust the implementation, call a security expert to help you. See the [sponsor](../sponsors) page for companies that can assist.
+
+## Example
+
+### Insecure Dynamic Import
+
+```python
+# INSECURE: Directly importing user-supplied module name
+import importlib
+
+user_input = input("Enter module name to load: ")
+module = importlib.import_module(user_input)
+
+# If user enters "os", they can now access system functions
+# If user enters "subprocess", they can execute shell commands
+module.system("rm -rf /")  # Potentially catastrophic
+```
+
+**What is wrong with this code?**
+- No validation of user input
+- No allowlist of permitted modules
+- Attacker can import any standard library or installed module
+- Attacker can potentially call dangerous functions after import
+
+
+### No Dynamic Imports (Recommended)
+
+The **most secure** approach is to avoid dynamic imports entirely and use static imports with dispatch tables:
+
+```python
+# MOST SECURE: No dynamic imports - use static imports with dispatch
+import math
+import json
+import datetime
+import re
+from typing import Dict, Callable, Any
+
+# Dispatch table mapping names to actual modules
+MODULE_DISPATCH: Dict[str, Any] = {
+    "math": math,
+    "json": json,
+    "datetime": datetime,
+    "re": re
+}
+
+# Dispatch table for specific functions
+FUNCTION_DISPATCH: Dict[str, Callable] = {
+    "math.sqrt": math.sqrt,
+    "math.pi": lambda: math.pi,
+    "json.loads": json.loads,
+    "json.dumps": json.dumps,
+    "datetime.datetime": datetime.datetime,
+    "re.search": re.search
+}
+
+def get_module(module_name: str) -> Any:
+    """Get a module from the dispatch table - no dynamic import needed."""
+    if module_name not in MODULE_DISPATCH:
+        raise ValueError(f"Module '{module_name}' not available")
+    return MODULE_DISPATCH[module_name]
+
+def get_function(function_name: str) -> Callable:
+    """Get a function from the dispatch table - no dynamic import needed."""
+    if function_name not in FUNCTION_DISPATCH:
+        raise ValueError(f"Function '{function_name}' not available")
+    return FUNCTION_DISPATCH[function_name]
+
+# Usage
+user_input = "math.sqrt"  # From user input
+try:
+    func = get_function(user_input)
+    result = func(25)  # sqrt(25) = 5
+    print(f"Result: {result}")
+except ValueError as e:
+    print(f"Invalid request: {e}")
+```
+
+## Summary of Best Practices
+
+| Practice | Recommendation |
+|----------|----------------|
+| **Avoid dynamic imports** | Prefer static imports with dispatch tables whenever possible |
+| **Never use `__import__()`** | This legacy function should never appear in modern Python code |
+| **Use allowlists** | If dynamic imports are unavoidable, maintain a strict allowlist of permitted modules |
+| **Validate function access** | Do not expose entire modules — restrict access to specific safe functions |
+| **Audit all imports** | Use static analysis tools to detect and review all dynamic import usage |
+
+## References
+
+- [Python `importlib.import_module()` documentation](https://docs.python.org/3/library/importlib.html#importlib.import_module)
+- [Python `__import__()` documentation (legacy)](https://docs.python.org/3/library/functions.html#import__)
+- [CWE-94: Improper Control of Generation of Code ('Code Injection')](https://cwe.mitre.org/data/definitions/94.html)
+- [CWE-706: Use of Incorrectly-Resolved Name or Reference](https://cwe.mitre.org/data/definitions/706.html)
+```

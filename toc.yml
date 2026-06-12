@@ -3,6 +3,8 @@ project:
   toc:
     - file: intro.md
     - file: introduction.md
+      children: #dropdown menu
+        - file: toc_outline.md
     
    
     
@@ -29,6 +31,16 @@ project:
         - file: securitytools/complexitycheck.md
         - file: securitytools/osv.md
     
+    - file: constructs/constructs_intro.md
+      children: #dropdown menu
+        - file: constructs/assert.md
+        - file: constructs/input.md
+        - file: constructs/builtins.md
+        - file: constructs/chmod.md
+        - file: constructs/binding.md
+        - file: constructs/directorycreation.md
+        - file: constructs/dynamicimports.md
+
     - file: guidelines/guidelines_intro.md 
       children:
         - file: guidelines/secure_use.md

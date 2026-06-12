@@ -1,0 +1,76 @@
+# Input Statement
+
+Using the `input()` is always a security concern. Input is seldom properly handled from a defense security perspective.
+
+When using `input` with incorrect or no validation and sanitizing the risk for remote code execution (RCE) and other serious attacks is present.
+
+From a security perspective: The fundamental security concern lies not in use of the `input()` function itself, but in how you process use the data it receives. 
+
+:::{hint} 
+Always treat all user input as untrusted.
+
+Validate/sanitize all input thoroughly before using it in any part of your application.
+:::
+
+
+## Security concerns 
+
+Common security concerns with the use of `input()` in Python are:
+
+  * **Injection Attacks:** If you take user input and directly embed it into:
+      * **SQL queries:** SQL Injection (e.g., a user enters `' OR 1=1; --` to bypass login).
+      * **Shell commands:** Command Injection (e.g., a user enters `&& rm -rf /` when you use `os.system()` or `subprocess.call()` with user-provided arguments).
+      * **HTML/JavaScript for web applications:** Cross-Site Scripting (XSS) if you display unescaped user input on a web page.
+  
+  * **Path Traversal:** If user input is used to construct file paths, a malicious user could use `../` to access files outside of the intended directory.
+  
+  * **Denial of Service (DoS):** Extremely long or malformed input could consume excessive memory or CPU, leading to your program becoming unresponsive.
+  
+  * **Insecure Deserialization:** If you're deserializing data (e.g., using `pickle`) that was generated from user input, a malicious attacker could craft a serialized object that, when deserialized, executes arbitrary code. (This isn't directly `input()`'s fault, but it's a common pattern where `input()` might feed into it).
+  
+  * **Revealing Sensitive Information:** If your error handling is too verbose and displays raw error messages that include sensitive system paths or internal details based on user input, attackers can use this information for further exploitation.
+
+## Preventive measures
+
+Some simple rules for handling User Input:
+
+1.  **Always Validate Input:**
+
+      * **Whitelist Validation:** Define what constitutes valid input (e.g., only digits, specific characters, certain length) and reject anything that doesn't match. This is generally more secure than trying to blacklist bad input.
+      * **Regular Expressions:** Use `re` module for complex pattern matching.
+      * **Type Conversion and Error Handling:** If you expect a number, try to convert the input to `int` or `float` and handle `ValueError` gracefully.
+
+2.  **Sanitize Input:** Remove or escape potentially dangerous characters from the input.
+
+      * For HTML output, use libraries like `html` (built-in) or `Bleach` to escape HTML entities.
+      * For database queries, use parameterized queries (prepared statements) provided by your database driver/ORM. **Never concatenate user input directly into SQL strings.**
+      * For shell commands, avoid `shell=True` in `subprocess` whenever possible, and pass arguments as a list of strings. Validate and sanitize each argument.
+
+3.  **Limit Input Size:** Restrict the maximum length of user input to prevent buffer overflows or excessive memory usage.
+
+4. **Practice security testing:**: Always run fuzzers on user input statements. 
+
+:::{danger} 
+Never ever use `eval()` or `exec()` directly with user-provided strings. Always sanitize and validate all input first.
+:::
+ 
+These functions are extremely dangerous as they execute arbitrary Python code that can be supplied from user input using the `input` statement.
+
+4.  **Principle of Least Privilege:** Your application should only have the minimum permissions necessary to perform its function.
+
+5.  **Secure Error Handling:** Don't display raw error messages to users. Log them for internal review and provide generic, user-friendly error messages instead.
+
+## Discussion
+
+Validating and sanitising user-supplied input is never simple. Always follow simple but proven [Security by Design](https://nocomplexity.github.io/securitybydesign/securityprinciples/) principles.
+
+:::{tip}
+Use a battle-tested library for validating and sanitising your user input. But be cautious: no library is perfect, and your use case is unique. So never trust — always verify.
+:::
+
+
+## More information
+
+* [CWE-77: Improper Neutralization of Special Elements used in a Command ('Command Injection')](https://cwe.mitre.org/data/definitions/77.html)
+* [CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')](https://cwe.mitre.org/data/definitions/79.html) 
+* [CWE-20: Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)
