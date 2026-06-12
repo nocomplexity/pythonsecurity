@@ -63,7 +63,7 @@ Every contribution — no matter how small — helps improve the quality and rea
 
 The following people have contributed their expertise to make the world — partly powered by Python software — a bit more secure by contributing to this *Python Security Handbook*.
 
-Thank you to everyone who has helped improve the security of the Python ecosystem!
+Thank you to everyone who has helped to improve the security of the Python ecosystem!
 
 
 [name or alias] [OPTIONAL: Website] [OPTIONAL: Organisation name]
