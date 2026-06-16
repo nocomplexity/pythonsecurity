@@ -40,6 +40,12 @@ project:
         - file: constructs/binding.md
         - file: constructs/directorycreation.md
         - file: constructs/dynamicimports.md
+        - file: constructs/exceptions.md
+        - file: constructs/tarfile.md
+        - file: constructs/weakhash.md
+        - file: constructs/ftp.md
+        - file: constructs/marshal.md
+
 
     - file: guidelines/guidelines_intro.md 
       children:
