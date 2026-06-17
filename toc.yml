@@ -51,6 +51,14 @@ project:
         - file: constructs/logging.md
         - file: constructs/base64.md
         - file: constructs/httpserver.md
+        - file: constructs/multiprocessing.md
+        - file: constructs/pickle.md
+        - file: constructs/random.md
+        - file: constructs/shelve.md
+        - file: constructs/syscalls.md
+        - file: constructs/xml.md
+        - file: constructs/zipfiles.md
+        - file: constructs/shutil.md
 
 
     - file: guidelines/guidelines_intro.md 
