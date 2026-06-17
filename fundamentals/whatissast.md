@@ -125,7 +125,7 @@ At a function level, Python Code Audit makes use of a common technique to scan t
 Simple good cyber security is possible by [Shift left](https://nocomplexity.com/documents/simplifysecurity/shiftleft.html). By detecting issues early in the SLDC process the cost to solve potential security issues is low. 
 
 
-
+(vulnerability)=
 ## Difference Between Weakness and Vulnerability
 
 Every Python SAST tool — including [Python Code Audit](../securitytools/codeaudit.md) — scans your codebase for potential security issues. These tools flag **weaknesses** that *could* lead to exploitable security vulnerabilities.

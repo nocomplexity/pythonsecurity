@@ -3,7 +3,7 @@
 The `tempfile.mktemp()` function in Python's standard library is **deprecated and insecure**. Its use introduces a critical **Time-of-Check to Time-of-Use (TOCTOU)** vulnerability that can be exploited by attackers to compromise your application.
 
 :::{danger} 
-**Never use `tempfile.mktemp()` in new code.** The function has been deprecated since Python 2.3 (2003) and removed from Python 3.12+ documentation as a recommended practice. Its continued use represents a significant security risk with no valid justification in modern applications.
+**Never use `tempfile.mktemp()` in new code.** The function has been deprecated and removed from Python 3.12+. But its continued use in older code bases represents a significant security risk with no valid justification in modern applications.
 :::
 
 ## Security Concerns

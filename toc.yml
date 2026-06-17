@@ -46,6 +46,8 @@ project:
         - file: constructs/ftp.md
         - file: constructs/marshal.md
         - file: constructs/mktemp.md
+        - file: constructs/subprocess.md
+        - file: constructs/systemcalls.md
 
 
     - file: guidelines/guidelines_intro.md 
