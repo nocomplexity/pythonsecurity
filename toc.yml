@@ -48,6 +48,9 @@ project:
         - file: constructs/mktemp.md
         - file: constructs/subprocess.md
         - file: constructs/systemcalls.md
+        - file: constructs/logging.md
+        - file: constructs/base64.md
+        - file: constructs/httpserver.md
 
 
     - file: guidelines/guidelines_intro.md 

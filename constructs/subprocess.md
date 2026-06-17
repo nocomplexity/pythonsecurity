@@ -128,7 +128,7 @@ Wherever possible, you should use a native Python API instead of invoking shell 
 
 `Popen` is the low-level foundation and used for some advanced cases, but use `run()` for most cases if you need this kind of functionality.
 
-Using `Popen` itself is not directly a [vulnerability](vulnerability), but too often crucial checks are missing so within code `Popen` is often a weakness that should be reviewed in depth.
+Using `Popen` itself is not directly a [vulnerability](#vulnerability), but too often crucial checks are missing so within code `Popen` is often a weakness that should be reviewed in depth.
 
 ## More information
 
