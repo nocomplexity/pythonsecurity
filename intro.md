@@ -26,7 +26,13 @@ The purpose of this book is to help Python developers and security analysts unde
 
 ## Pay What you can
 
- **Cybersecurity education shouldn't be a luxury.**
+
+:::{tip} Python Security Handbook – PDF Edition Now Available!
+
+{button}`Get the PDF Now! <https://nocomplexity.gumroad.com/l/PythonSecurity>`
+:::
+ 
+**Cybersecurity education shouldn't be a luxury.**
 
 I believe that **critical security knowledge** should be open, borderless, and accessible to everyone. 
 
