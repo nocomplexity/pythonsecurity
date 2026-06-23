@@ -81,8 +81,8 @@ codeaudit filescan <pythonfile|package-name|directory> [OUTPUTFILE]
 The tool analyzes the specified file, package, or directory and generates an HTML security report.
 
 
-:::{admonition} High-risk integrations are a key focus for [Python Code Audit](https://nocomplexity.com/codeaudit/) egress detection!
-:class: danger, dropdown
+:::{danger} High-risk integrations are a key focus for [Python Code Audit](https://nocomplexity.com/codeaudit/) egress detection!
+:class: dropdown
 
 The following categories represent common classes of external service integrations that may introduce data egress or external communication risks in Python applications.
 

@@ -62,8 +62,7 @@ For AI-generated, Python programs you will see a lot of assert statement warning
 
 For production code, especially when handling external inputs or executing critical logic, always rely on explicit condition checks and robust exception handling.
 
-:::{admonition} Instead of an assert, use standard control flow and exception raising
-:class: hint
+:::{hint} Instead of an assert, use standard control flow and exception raising
 
 * Use if/else checks: Explicitly validate inputs and conditions.
 

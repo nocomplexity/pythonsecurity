@@ -28,8 +28,7 @@ This book is created for modern Python use. This means all examples are minimal 
 Security is a process that must be embedded within your development flow at every stage, from design through to production, maintenance, and operations. For those using or developing Python programs, this means that security should, at a minimum, be integrated into the initial design or architecture.
 :::
 
-:::{admonition} TLDR - If you short on time
-:class: important
+:::{important} TLDR - If you short on time
 The bare minimum to do as programmer is:
 * Follow and use the [Python Secure Coding Guidelines](https://nocomplexity.com/documents/codeaudit/securecoding.html).
 
@@ -43,6 +42,16 @@ and:
 
 No single book can cover every aspect of Python security. Here are the **essential** companion resources that many Python developers and security consultants rely on to strengthen their skills and deliver better results.
 
+:::{raw:typst}
+
+- Security Testing for Python
+- Security By Design
+- Open Security Reference Architecture
+
+Check: https://nocomplexity.com/simplify-security/
+:::
+
++++{"no-pdf": true}
 ::::{grid} 1 1 2 3
 
 :::{card} 😃 **Python Security Handbook**  
@@ -91,6 +100,7 @@ Accelerate your Python security architecture work with proven patterns and desig
 :::
 
 ::::
++++
 
 
 ## Audience

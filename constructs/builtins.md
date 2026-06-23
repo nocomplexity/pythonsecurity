@@ -15,8 +15,8 @@ Should always be reviewed within the full context. By default use of this functi
 
 ## Why check on `eval`
 
-:::{admonition} Security risk
-:class: danger
+:::{danger} Security risk
+
 `eval()` can execute arbitrary Python code. 
 
 If the input is user-controlled or from an untrusted source, this can be exploited.

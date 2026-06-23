@@ -11,6 +11,10 @@ This publication therefore focuses on the essential aspects that matter most for
 
 2. Needs the core knowledge required to audit the security of Python code written by others.
 
++++{"no-pdf": true}
+
 :::{toc}
 :context: project
 :::
+
++++

@@ -104,8 +104,7 @@ When using External Modules:
  +++
 
 
-:::{admonition} **Disclaimer**  
-:class: note
+:::{note} **Disclaimer**  
 
 These **Python Secure Coding Guidelines** are based on real-world breaches and [CWE](https://cwe.mitre.org/index.html) entries from the *Most Dangerous Software Weaknesses* list.  
  

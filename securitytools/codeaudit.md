@@ -28,8 +28,7 @@ Python Code Audit offers a powerful yet straightforward security solution:
 Python Code Audit is specifically designed for Python codebases. It is tailored to Python’s syntax and unique constructs, enabling it to identify potential security issues effectively.
 
 
-:::{admonition} Key Features of Python Code Audit
-:class: tip
+:::{tip} Key Features of Python Code Audit
 
 * **Vulnerability Detection**  
   Detects potential security issues in Python source files. This is essential for validating trust in third-party modules and supporting security research.

@@ -98,8 +98,7 @@ Cyclomatic complexity is an early-warning system. **[Python Code Audit](https://
 Python security testing involves analysing intricate execution paths where vulnerabilities—which often elude automated testing tools—can remain undetected.
 
 
-:::{admonition} Security Mindset
-:class: tip
+:::{tip} Security Mindset
 
 Cyclomatic complexity is not just a maintainability metric — it is a **security signal**. Complex code increases cognitive load, and security flaws thrive where reasoning is difficult.
 

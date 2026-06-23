@@ -13,8 +13,8 @@ Python-specific security tools differ fundamentally from generic, multi-language
 
 General-purpose tools frequently miss critical Python vulnerabilities because they do not fully understand the language’s unique syntax, dynamic behaviour, semantics, and common idioms.
 
-:::{admonition} Distrust suites claim that can do anything!
-:class: tip
+:::{tip} Distrust suites claim that can do anything!
+
 A “holy grail” tool that integrates every necessary function does not exist.
 
 AI-powered tools leveraging Large Language Models (LLMs) should not be trusted blindly for security.
@@ -38,6 +38,10 @@ Consequently, every security engineer should possess a solid understanding of th
 For an excellent, opinionated overview of Free and Open-Source Software (FOSS) security tools categorised by their role in the security management process, the [Open Security Solutions Guide](https://nocomplexity.com/documents/securitysolutions/intro.html) is a highly recommended resource.
 :::
 
++++{"no-pdf": true}
+
 :::{toc}
 :context: children
 :::
+
++++

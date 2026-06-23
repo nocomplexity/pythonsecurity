@@ -8,8 +8,7 @@ Using these methods in Python code can give serious security concerns.
 ## Security concerns
 
 
-:::{admonition} The default rule is:
-:class: danger
+:::{danger} The default rule is:
 Assume all input is malicious.
 :::
 

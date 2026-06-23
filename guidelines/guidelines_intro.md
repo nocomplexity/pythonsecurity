@@ -15,7 +15,10 @@ In many mature professions, checklists have become a mandatory safeguard against
 
 ![Checklists](../images/checklists.png)
 
++++{"no-pdf": true}
 
 :::{toc}
 :context: children
 :::
+
++++
