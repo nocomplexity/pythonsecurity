@@ -148,7 +148,8 @@ Examples in Python:
 
 
 **Vulnerability:**  
-A vulnerability is a weakness that can be **actually exploited** by an attacker to compromise the confidentiality, integrity, or availability of your system.  A vulnerability can be targeted intentionally by an attacker or triggered incidentally by a user or administrator (e.g. to execute malware, escalate privileges, leak data accidentally, or make the system unavailable).
+A vulnerability is a weakness that **could** be exploited by an attacker to compromise the confidentiality, integrity, or availability of your system.
+A vulnerability can be targeted intentionally by an attacker or triggered incidentally by a user or administrator (e.g. to execute malware, escalate privileges, leak data accidentally, or make the system unavailable).
 
 
 **Key Rule:** All vulnerabilities are weaknesses, but not all weaknesses are vulnerabilities.
