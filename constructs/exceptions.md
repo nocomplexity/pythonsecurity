@@ -153,9 +153,28 @@ for item in data:
         continue  # Just as dangerous as pass
 ```
 
+### Can `pass` and `continue` be reliably identified as security weaknesses?
 
+The presence of `pass` or `continue` in an `except` block is an indicator that an exception is being suppressed. 
 
+A good SAST Python scanner does this. However many SAST scanners try to suppress so called 'false positives' with complex logic or use a scoring approach. This has a very high risk, no method is solid and when findings within exception clauses have a low score, you might think that your code is secure. But the risk of a false sense of security is enormous. 
 
+Use of `pass` or `continue` in an `except` block does not, by itself, imply a directly security weakness. 
+There are many cases, suppressing an expected exception is intentional and forms part of the function's documented behavior (for example, converting a `ValueError` into `False` during input validation).
+
+Determining whether suppressing an exception is appropriate requires understanding the program's intent, the expected behavior of the API, and the effect on the remainder of the program. These properties cannot be inferred from the syntax of the exception handler alone.
+
+Static analysis can identify suspicious patterns, such as `except: pass` or `except Exception: continue`, but it **cannot** determine with certainty whether the suppression is correct or harmful. As a result, these patterns should be treated as potential findings that require further review rather than definitive security weakness finding.
+
+Even sophisticated analyses, such as taint analysis, cannot achieve 100% accuracy. Taint analysis tracks the flow of data through a program but does not capture the developer's intent or the full semantics of Python's runtime behavior. 
+
+Python's dynamic features—including dynamic typing, reflection, monkey patching, runtime code generation (`exec` and `eval`), dynamic imports, and polymorphic dispatch—prevent any static analysis from precisely modeling every possible execution path. Furthermore, determining all possible behaviors of an arbitrary program is fundamentally undecidable in the general case. 
+
+Consequently, no analysis tool can determine with complete certainty whether the use of `pass` or `continue` in an exception handler constitutes a genuine security weakness. 
+
+:::{hint}
+The best approach is to identify suspicious constructs and rely on human review to determine whether the exception suppression is appropriate in its specific context. Using heuristics to identify suspicious constructs can be dangerous and error prone.
+:::
 
 
 ## More Information
