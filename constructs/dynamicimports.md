@@ -9,6 +9,7 @@ Dynamic imports are especially dangerous if you cannot validate upfront what is 
 Dynamic imports can be achieved using:
 * `__import__`: This built-in function **SHOULD** never be used. It is an advanced, low-level function that is not needed in everyday Python programming.
 * `importlib.import_module()`: If dynamic imports are unavoidable, this function is the preferred approach. However, its use must be validated upfront.
+* `importlib.util.spec_from_file_location` in combination with `importlib.util.module_from_spec`
 
 ## Security concerns
 
@@ -39,6 +40,18 @@ module = importlib.import_module("module_name")
 ```
 Avoid using `__import__()` entirely.
 :::
+
+## Module imports in Python Plugin systems
+
+From a [security-by-design](https://nocomplexity.github.io/securitybydesign/) perspective, utilizing `importlib.util.spec_from_file_location()` alongside `module_from_spec()` to load plugins introduces severe architectural security risks. This mechanism operates at a low level, bypassing Python’s standard, sandboxed import restrictions and allowing the direct execution of arbitrary code from any accessible file path on the disk.
+
+If the file paths or module specifications are influenced by untrusted input—such as user-controlled configuration files or unvalidated directory paths—an attacker can exploit this to achieve Remote Code Execution (RCE) by tricking the application into importing malicious scripts.
+
+
+Rather than pointing directly to unpredictable locations on disk, modern Python architectures should leverage **namespace packages** or the standard **`importlib.metadata` entry points API**. By registering plugins via package metadata, the application shifts from a dangerous "pull-from-disk" model to a secure, declarative system where only explicitly installed distribution packages can be loaded.
+
+
+
 
 ## Mitigations
 
@@ -83,6 +96,16 @@ module.system("rm -rf /")  # Potentially catastrophic
 - No allowlist of permitted modules
 - Attacker can import any standard library or installed module
 - Attacker can potentially call dangerous functions after import
+
+### The Vulnerable Pattern for a plugin system
+
+```python
+# SECURITY RISK: Avoid this low-level dynamic loading pattern
+spec = importlib.util.spec_from_file_location(plugin_name, unsafe_file_path)
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)  # Arbitrary code execution occurs here
+
+```
 
 
 ### No Dynamic Imports (Recommended)
@@ -147,10 +170,40 @@ except ValueError as e:
 | **Validate function access** | Do not expose entire modules — restrict access to specific safe functions |
 | **Audit all imports** | Use static analysis tools to detect and review all dynamic import usage |
 
+### Security and Python plugin systems
+
+
+| Method                                       |   Dynamic discovery | Loads arbitrary files | Recommended |
+| -------------------------------------------- |  ----------------- | --------------------- | ----------- |
+| `importlib.metadata.entry_points()`          |  Yes               | No                    | ⭐⭐⭐⭐⭐       |
+| `importlib.import_module()`                  |  Limited           | No                    | ⭐⭐⭐⭐☆       |
+| `pkgutil.iter_modules()` + `import_module()` |  Yes               | No                    | ⭐⭐⭐⭐☆       |
+| Namespace packages                           |  Yes               | No                    | ⭐⭐⭐⭐☆       |
+| `spec_from_file_location()`                  |  Yes               | **Yes**               | ⭐⭐☆☆☆       |
+| `SourceFileLoader`                           |  Yes               | **Yes**               | ⭐⭐☆☆☆       |
+| `__import__()`                               |  No                | No                    | ⭐⭐⭐☆☆       |
+
+
+
+For new applications, the most robust and secure options are:
+
+1. `importlib.metadata.entry_points()` when plugins are installed as Python packages. This leverages Python's packaging ecosystem and avoids arbitrary file loading.
+2. `pkgutil.iter_modules()` + `importlib.import_module()` when plugins reside in a known package within your application. This provides automatic discovery while still using Python's standard import machinery.
+3. Reserve `importlib.util.spec_from_file_location()` for cases where you genuinely need to load modules from arbitrary file paths (for example, user-provided scripts in a controlled environment). If you use it, ensure the plugin directory is trusted, validate or authenticate plugin files (for example, using signatures or hashes), and avoid passing user-controlled paths directly to the loader.
+
+From a security perspective, `spec_from_file_location()` and related APIs (`module_from_spec()`, `exec_module()`) are **always** worth reviewing as this methods can bypass the normal import mechanism and can execute arbitrary Python files. By contrast, `import_module()`, `pkgutil.iter_modules()`, and `importlib.metadata.entry_points()` generally represent a lower-risk patterns because they work within Python's standard import and packaging systems. 
+
+:::{tip}
+Never trust an import system in Python that has the ability to load arbitrary files!
+:::
+
+
 ## References
 
 - [Python `importlib.import_module()` documentation](https://docs.python.org/3/library/importlib.html#importlib.import_module)
 - [Python `__import__()` documentation (legacy)](https://docs.python.org/3/library/functions.html#import__)
+- [Implicit Execution of Arbitrary Code via Automatic `tools.py` Loading ](https://github.com/MervinPraison/PraisonAI/security/advisories/GHSA-2g3w-cpc4-chr4)
+- [CVE-2026-40156](https://nvd.nist.gov/vuln/detail/CVE-2026-40156)
 - [CWE-94: Improper Control of Generation of Code ('Code Injection')](https://cwe.mitre.org/data/definitions/94.html)
 - [CWE-706: Use of Incorrectly-Resolved Name or Reference](https://cwe.mitre.org/data/definitions/706.html)
 ```
