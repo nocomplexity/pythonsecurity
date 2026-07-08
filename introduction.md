@@ -9,7 +9,7 @@ Python is the most widely used programming language worldwide, valued for its re
 
 Python plays a central role in modern computing. It powers some of the world’s largest websites and web applications, serving as a key driver of advances in artificial intelligence and machine learning. Its comprehensive libraries and adaptability have established it as a standard tool across scientific research and data-intensive disciplines.
 
-In addition to its academic and research applications, Python is deeply integrated into the operations of millions of companies and supports a vast number of software systems and applications globally. This combination of versatility, scalability, and community support underpins Python’s position as a foundational technology in contemporary computing.
+In addition to its academic and research applications, Python code is deeply integrated into the operations of millions of companies and supports a vast number of software systems and applications globally. This combination of versatility, scalability, and community support underpins Python’s position as a foundational technology in contemporary computing.
 
 In today’s digital world, cybersecurity remains a critical concern. This applies equally to using or creating Python software: preventing vulnerabilities starts with a solid architecture, but even well-written code—including AI-generated code—is not secure by default.
 
