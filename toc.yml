@@ -68,13 +68,14 @@ project:
         - file: guidelines/validatetips.md
         - file: guidelines/securityprinciples.md
 
-    - title: Python Security Recipes
-      children:
+    - file: recipes/recipes_intro.md 
+      children:  # drop down    
         - file: recipes/openfile.md
         - file: recipes/traversalattacks.md
         - file: recipes/path_module.md
         - file: recipes/assert_use.md
         - file: recipes/data_egress.md
+        - file: recipes/use_secrets.md
 
     - title: Appendices #section header, no page
       children:

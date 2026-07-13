@@ -7,7 +7,7 @@ short_title: Security Principles Checklist
 Applying Security by Design principles is essential when building secure Python applications.
 :::
 
-
+(security-principles)=
 ## Security Principles
 
 When developing Python applications, you should apply at **minimum** the following Security by Design principles:
