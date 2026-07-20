@@ -11,6 +11,7 @@ project:
     - file: fundamentals/fundamentals_intro.md #section Fundamentals 
       children: #dropdown menu
         - file: fundamentals/executionmodel.md
+        - file: fundamentals/cpython_security.md
         - file: fundamentals/bytecode.md
         - file: fundamentals/threatmodel.md
         - file: fundamentals/attacklandscape.md
