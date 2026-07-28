@@ -12,10 +12,13 @@ The following Python `os` system calls should by default ring an alarm bell from
 * The `os.exec*` family (`os.execl`, `os.execle`, `os.execlp`, `os.execlpe`, `os.execv`, `os.execve`, `os.execvp`, `os.execvpe`) — these replace the current process with a new program and **do not return**.
 * `os.fork()` — creates a child process (Unix only); can lead to fork bombs or resource exhaustion if misused.
 * `os.write()` / `os.writev()` — low-level writes to raw file descriptors.
-* And several other similar low-level functions.
+
+And several other similar low-level functions.
 
 :::{tip}
-When shell-like functionality is required, prefer the modern `subprocess` module with proper safeguards (see the Subprocess section). Native Python APIs from `os`, `pathlib`, `shutil`, etc., are almost always safer and more portable.
+Avoid using shell commands for tasks that can be performed directly in Python. Modules such as `pathlib`, `shutil`, and `os` usually provide safer and more portable alternatives. However, these APIs are not automatically secure: take care when handling untrusted input, file paths, permissions, or other external data.
+
+When invoking external programs is necessary, use the `subprocess` module rather than shell execution, and follow the recommended security practices described in the [Subprocess section](constructs/subprocess).
 :::
 
 ## Security Concerns
