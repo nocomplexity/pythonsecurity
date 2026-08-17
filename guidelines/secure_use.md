@@ -13,13 +13,17 @@ So this means if you want to avoid security risks when using Python programs:
 
 ### 1. **Install Python programs only from trusted sources**.
 
-    Use only official, managed repositories such as:
-    -    PyPI.org
-    -    conda
-    -    conda-forge
-    Never download or execute Python programs from untrusted websites, random forums, or unknown Git repositories. This helps reduce the risk of supply chain attacks that could compromise your system.
+Use only official, managed repositories such as:
+-    PyPI.org
+-    conda
+-    conda-forge
+Never download or execute Python programs from untrusted websites, random forums, or unknown Git repositories. This helps reduce the risk of supply chain attacks that could compromise your system. 
 
-Only run Python scripts if you fully understand what they do and where they came from.
+Only run Python scripts if you fully understand what they do and where they came from. 
+
+:::{warning}
+Packages published on PyPI are not automatically safe to use. When security is critical, perform a reproducible build verification to confirm that the uploaded package matches the official source code.
+:::
 
 +++
 
@@ -110,14 +114,14 @@ FOSS software is not automatic more secure that commercial software. But having 
 
 ### 7. **Check for security validation from the author or maintainers**:
 
-    - Verify if the program has been scanned for security weaknesses by its creator.
-    - Look for a “Python Code Audit Badge”:
+- Verify if the program has been scanned for security weaknesses by its creator.
+- Look for a “Python Code Audit Badge”:
 
-    - or similar trusted security validation indicator.
-    
-    If you cannot find such a badge, ask the creator:
-    -    What SAST tool was used?
-    -    Can they share a scan report for the released version?
+- or similar trusted security validation indicator.
+
+If you cannot find such a badge, ask the creator:
+-    What SAST tool was used?
+-    Can they share a scan report for the released version?
 
 +++
 
