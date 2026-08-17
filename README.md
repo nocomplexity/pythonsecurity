@@ -46,7 +46,7 @@ You can read the book online at:
 
 ## Contributing
 
-Contributions are welcome! See [CONTRIBUTING](CONTRIBUTING.md) for details.
+Contributions are welcome! See [CONTRIBUTING](https://nocomplexity.github.io/pythonsecurity/contribute/) for details.
 
 Simple ways to help:
 - Star the repository
