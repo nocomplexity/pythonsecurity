@@ -17,6 +17,7 @@ project:
         - file: fundamentals/attacklandscape.md
         - file: fundamentals/dependencies.md
         - file: fundamentals/whatissast.md
+        - file: fundamentals/pypi_security.md
         - file: fundamentals/enhancedsecurity.md
         - file: fundamentals/isolated_mode.md
         - file: fundamentals/ai_security.md
