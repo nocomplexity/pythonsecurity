@@ -67,117 +67,53 @@ Use only official, managed repositories when installing Python packages. Never e
 
 ---
 
-## Security measures on PyPI
+## Security Measures on PyPI
 
-PyPI implements a number of controls designed to protect the registry, package publishers, and package consumers. These controls address different parts of the software supply chain and should not be confused with a guarantee that individual packages are safe.
+The Python Package Index (PyPI) implements a range of controls designed to defend the registry, package publishers, and consumers against abuse. These measures form important layers of defence across the software supply chain, though they do **not guarantee that individual packages are safe**:
 
-### Distribution hashes
+* **Upload Window Restrictions:** New files uploaded to releases older than 14 days are rejected to prevent long-stable releases from being poisoned if project tokens or workflows are compromised.
 
-PyPI publishes cryptographic hashes for distribution files. These hashes can be used to verify that a downloaded file is identical to the file associated with that hash on PyPI. PyPI recommends using a cryptographically strong hash such as SHA-256 rather than MD5. ([PyPI][1])
+* **Phishing Protection:** PyPI actively monitors and flags untrusted domains designed to impersonate the index.
+* **ZIP Archive Hardening:** Rejects malformed or ambiguous ZIP archives to prevent parser-confusion attacks and ensure consistent interpretation across tools.
+* **Typosquatting & Spam Control:** Automated detection identifies potential typosquatting during project creation, alongside controls to block automated registration abuse.
+* **Domain-Resurrection Safeguards:** PyPI monitors expired domains linked to active projects to prevent attackers from hijacking previously trusted domains.
+* **Malware Response:** Active processes exist to investigate reports of malicious packages and remove them. In 2025 alone, PyPI processed over 2,000 malware reports while publishing detailed incident analyses on phishing and supply-chain events.
 
-A hash provides **integrity**, but by itself does not establish **trustworthiness**.
+### Distribution Hashes & HTTPS
 
-For example:
+PyPI delivers package downloads over HTTPS, using TLS to secure the connection and prevent network-level tampering. Additionally, PyPI publishes cryptographic hashes (preferring SHA-256 over MD5) to ensure file integrity.
 
-```text
-artifact
-   |
-   +-- SHA-256 --> "this is exactly this file"
-```
+However, integrity and transport security do not equal trustworthiness:
 
-It does not establish:
+* **HTTPS** proves you are communicating with the official PyPI infrastructure, but does not verify maintainer legitimacy or source origin.
+* **SHA-256 Hashes** confirm that a downloaded file matches the registry artifact, but cannot prove it corresponds to a specific Git commit, originated from an official CI system, or is free of vulnerabilities.
 
-```text
-artifact
-   |
-   +-- "this came from a particular Git commit"
-   |
-   +-- "this was built by the project's official CI system"
-   |
-   +-- "the maintainer is trustworthy"
-   |
-   +-- "the code is free of vulnerabilities"
-```
+### `pip` Hash-Checking Mode
 
-These are different security properties.
-
-### HTTPS and the PyPI download hash
-
-PyPI's package downloads are delivered over HTTPS. TLS protects the connection between the client and the PyPI infrastructure and helps prevent an attacker on the network from substituting a different file.
-
-However, HTTPS should not be confused with publisher authentication.
-
-For example, HTTPS can establish that a client is communicating with the legitimate PyPI service. It does not establish that the maintainer who uploaded a particular release is trustworthy, nor that the artifact was produced from a particular source repository.
-
-Similarly, a PyPI SHA-256 hash identifies the contents of a particular distribution. It does not prove that those contents correspond to a particular Git commit.
-
-### `pip` hash-checking mode
-
-`pip` supports an explicit hash-checking mode using `--require-hashes`. In this mode, hashes are supplied by the user, normally through a requirements file, and `pip` verifies downloaded distributions against those expected hashes.
-
-For example:
+`pip` supports strict verification via the `--require-hashes` flag. When enabled, every requirement and dependency must be pinned to a specific version or path and matched against an explicit, user-supplied hash:
 
 ```text
 SomePackage==1.2.3 \
     --hash=sha256:<expected-hash>
+
 ```
 
-Hash-checking mode is deliberately strict. All requirements and dependencies must have hashes, and requirements must be pinned to a specific version, URL, or local path. This makes it useful for reproducible and tightly controlled deployments, but it also makes it less convenient for dependency specifications that intentionally allow versions to change. 
+This prevents unexpected modification or substitution of distributions, making it ideal for reproducible deployments. Because normal `pip install` commands do not enforce hash checking by default, consumers must opt in explicitly. This mechanism addresses file substitution, but cannot determine if the expected artifact itself is malicious.
 
-An important distinction is that **`pip` does not provide this protection by default**. Normal `pip install` operations do not require the consumer to provide an independently selected hash for every dependency. 
+### Provenance: Trusted Publishing & Attestations
 
-Hash checking therefore addresses a specific threat: unexpected modification or substitution of a distribution. It does **not** determine whether the expected artifact itself is malicious.
+Modern PyPI security focuses on bridging the gap between artifact integrity and supply-chain provenance:
 
----
+* **Trusted Publishing:** Projects can authorise specific CI/CD identities (such as GitHub Actions or GitLab workflows) using OpenID Connect (OIDC). Short-lived credentials expire within 15 minutes, removing the need for long-lived PyPI API tokens.
+* **PyPI Attestations:** Built on Sigstore, attestations provide verifiable evidence linking a distribution to its publishing identity and CI workflow.
 
-## Provenance: Trusted Publishing and attestations
+While these tools prove where an artifact came from and how it was published, provenance is not an assertion of code quality. A compromised repository or build pipeline can still publish malicious artifacts using valid attestations. Provenance verifies origin, not trustworthiness.
 
-Modern PyPI security mechanisms increasingly address the gap between artifact integrity and artifact provenance.
-
-### Trusted Publishing
-
-PyPI Trusted Publishing allows a project to authorize a particular CI/CD identity, such as a GitHub Actions or GitLab workflow, to publish releases. It uses OpenID Connect (OIDC) and short-lived credentials rather than requiring a long-lived PyPI API token to be stored in the CI system. The short-lived token issued during the process expires after a maximum of 15 minutes. 
-
-This reduces the risk associated with stolen or accidentally exposed long-lived publishing credentials.
-
-Trusted Publishing does **not**, however, mean:
-
-> "Everything produced by this workflow is safe."
-
-A compromised repository, malicious contributor, compromised CI workflow, or unsafe build process can still produce a malicious artifact. PyPI explicitly describes Trusted Publishing as a security mechanism for the publishing process rather than an assertion that the published code is trustworthy. 
-
-### PyPI attestations
-
-PyPI also supports attestations based on Sigstore. An attestation can provide verifiable information linking a distribution to the identity used to publish it, such as a particular CI workflow.
-
-This allows a consumer to obtain stronger evidence about **where an artifact came from** than a bare file hash provides. PyPI documents attestations as a way to verify that a particular distribution was published through a Trusted Publisher and to identify that publisher. 
-
-Attestations should nevertheless be interpreted correctly:
-
-> **Provenance is not the same as trustworthiness.**
-
+:::{warning}
 An attestation can provide evidence that an artifact came from the expected build and publishing process. It does not prove that the source code is free from vulnerabilities or intentionally malicious behaviour.
+:::
 
----
 
-## PyPI's proactive security measures
-
-PyPI also implements security controls intended to protect the registry and its users from abuse. Examples include:
-
-* **Phishing protection:** PyPI detects and warns about certain untrusted domains used to impersonate PyPI.
-* **ZIP archive hardening:** PyPI rejects classes of malformed or ambiguous ZIP archives that could otherwise lead to differences in how package contents are interpreted by different tools.
-* **Typosquatting detection:** PyPI performs automated detection of potential typosquatting attempts during project creation.
-* **Domain-resurrection protection:** PyPI checks for expired domains associated with projects to reduce the risk that an attacker can acquire a previously trusted domain.
-* **Spam prevention:** PyPI applies controls to registrations and other activity associated with abuse campaigns.
-* **Malware response:** PyPI has a process for receiving and investigating reports of malicious packages and taking appropriate action.
-
-These measures are important layers of defence, but none of them means that every package available on PyPI has been security-reviewed.
-
-For example, in 2025 PyPI reported processing more than 2,000 malware reports. PyPI also published incident reports covering phishing attacks and other supply-chain security events. 
-
-PyPI has additionally hardened its handling of ZIP archives and wheels against parser-confusion attacks. This illustrates an important point: package-registry security is not limited to detecting malicious Python source code; the package formats and the tools that consume them are also part of the attack surface.
-
----
 
 ## Security challenges when using PyPI
 
@@ -198,7 +134,7 @@ These threats cannot be solved by a single control.
 
 A mature Python software-supply-chain security strategy therefore combines several layers: carefully selecting dependencies, pinning versions where appropriate, reviewing important packages, keeping dependencies updated, using vulnerability information, protecting maintainer and CI/CD credentials, using Trusted Publishing where possible, verifying provenance and attestations where available, and using hash-locked installations for environments that require strict reproducibility.
 
-### Summary
+## Summary
 
 **PyPI provides a distribution mechanism and a number of important security controls; it is not a security certification authority for Python packages.**
 
