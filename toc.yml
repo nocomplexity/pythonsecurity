@@ -28,8 +28,9 @@ project:
     - file: securitytools/tools_intro.md
       children: #dropdown menu
         - file: securitytools/opensourceinsights.md
-        - file: securitytools/pip_audit.md
+        - file: securitytools/fileaudit.md        
         - file: securitytools/codeaudit.md
+        - file: securitytools/pip_audit.md
         - file: securitytools/complexitycheck.md
         - file: securitytools/osv.md
     
