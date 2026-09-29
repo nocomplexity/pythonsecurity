@@ -5,7 +5,7 @@ short_title: AST vs Taint Analyse
 
 
 
-## AST-based Analysis versus Taint Analysis for SAST in Python
+## AST-based Analysis vs Taint Analysis for SAST
 
 Static Application Security Testing (SAST) for Python commonly relies on two complementary techniques: 
 1. **AST-based pattern matching** and 
@@ -22,7 +22,7 @@ AST-based analysis parses Python code into an Abstract Syntax Tree (AST) and mat
 - Hard-coded secrets, weak cryptographic algorithms, or unsafe serialisation (`pickle`, `yaml.load`)
 - And other local code patterns that can be recognised from the shape of the code alone
 
-Because the technique works directly on the syntax tree produced by Python’s standard `ast` module, it is fast, deterministic and highly trustworthyfor finding security weaknesses in Python code.
+Because the technique works directly on the syntax tree produced by Python’s standard `ast` module, it is fast, deterministic and highly trustworthy for finding security weaknesses in Python code.
 
 ## What is taint analysis?
 
@@ -32,14 +32,15 @@ Taint analysis tracks the flow of untrusted data (tainted data) from **sources**
 
 A taint analyses tries to track the flow of untrusted data (or “tainted” data) though a program to validate if correct preventive measurements to avoid vulnerabilities are taken. In essence, taint analysis answers the question: *“Can attacker-controlled input influence a dangerous operation?”*
 
-## Key observations from a Python security perspective
+## Key observations
 
-The following points apply when applying either technique to Python:
+From a Python security perspective keep in mind the following observations:
+
 
 * Python’s dynamic features—duck typing, late binding, `getattr`/`setattr`, decorators, metaclasses, first-class functions, `*args`/`**kwargs`, dynamic imports and framework “magic” (Flask/Django/FastAPI request handling, ORMs, dependency injection)—make complete and precise static reasoning difficult. Inter-procedural and cross-file taint tracking is particularly hard to get correct in a generic way.
 * There is no widely adopted, directly usable open test suite that gives an **open unbiased report** of SAST capabilities of various Python SAST tools. Research evaluations therefore rely on synthetic benchmarks or limited real-world CVE collections.
 * No method is perfect. Every approach has distinct advantages and disadvantages; the appropriate choice depends on context, risk appetite, performance constraints and maintenance capacity.
-* No open-source or commercial SAST scanner is ideal for every Python codebase. Tool authors must continually balance maintainability, usability, performance and the breadth of defect types that can be detected statically.
+* There is no perfect open-source or commercial SAST scanner for every Python codebase. Tool authors must continually balance maintainability, usability, performance and the breadth of defect types that can be detected statically.
 
 ## Comparison: AST-based checks versus taint analysis
 
