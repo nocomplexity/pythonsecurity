@@ -22,6 +22,7 @@ project:
         - file: fundamentals/isolated_mode.md
         - file: fundamentals/ai_security.md
         - file: fundamentals/vulnerabilityscanning.md
+        - file: fundamentals/ast_vs_taint.md
         - file: fundamentals/sast_vs_vulnerabilityscan.md
         
 
