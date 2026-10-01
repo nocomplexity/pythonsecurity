@@ -16,6 +16,7 @@ project:
         - file: fundamentals/threatmodel.md
         - file: fundamentals/attacklandscape.md
         - file: fundamentals/dependencies.md
+        - file: fundamentals/homoglyphs.md
         - file: fundamentals/whatissast.md
         - file: fundamentals/pypi_security.md
         - file: fundamentals/enhancedsecurity.md
