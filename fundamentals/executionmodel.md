@@ -20,19 +20,34 @@ While Python is an interpreted language, it involves a compilation step where so
 
 Detailed Execution Steps:
 
-1. **Source Code**: Python code is a file with a `.py` extension.
+**Detailed Execution Steps**
+
+1. **Source Code**  
+   Python programs begin as human-readable `.py` files containing the source code written by the developer.
 
 +++
 
-2. **Compilation to Bytecode**: When the program is run, the Python Compiler first translates the source code into an intermediate format called bytecode. During this phase, it also checks for syntax errors. This bytecode is a set of instructions tailored for the Python Virtual Machine. This bytecode is a platform-independent representation that is not specific to any operating system or hardware. The compiled bytecode is then stored in a .pyc file. For faster loading in future runs, the bytecode is saved as a `.pyc` file in a `__pycache__` directory. If a script is run directly, e.g. python `myscript.py`, Python compiles it to bytecode in memory only. After execution no bytecode is saved. So `.pyc` files are only created when a file is imported and when chasing is enabled (which is by default).
+2. **Compilation to Bytecode**  
+   When the program runs, the Python compiler performs lexical analysis (tokenizing) and parsing to build an Abstract Syntax Tree (AST). It then generates platform-independent bytecode — a set of intermediate instructions designed for the Python Virtual Machine. Syntax errors are detected during this phase.  
+   Bytecode is cached in `.pyc` files inside a `__pycache__` directory for faster loading on subsequent runs (primarily for imported modules). When a script is executed directly (e.g., `python myscript.py`), the bytecode is normally compiled and kept only in memory; no `.pyc` file is written unless the module is imported and caching is enabled (the default).
+
 
 +++
 
-3. **Execution by the Python Virtual Machine (PVM)**: The bytecode is then passed to the Python Virtual Machine (PVM), which acts as an interpreter. The PVM reads the bytecode instructions and translates them into machine-specific (binary) code that the computer's CPU can understand and execute.
+
+
+3. **Execution by the Python Virtual Machine (PVM)**  
+   The bytecode is handed to the Python Virtual Machine (the interpreter). The PVM reads and executes the bytecode instructions one by one. During execution it may issue operating-system system calls and perform I/O operations.
+
 
 +++
 
-4. **Execution and Output**: The computer's CPU executes the machine code instructions, interacts with the hardware (memory, I/O devices, etc.), and produces the final results or output of the program.
+
+4. **Output / Results**  
+   The final results of the program are produced and made visible to the user. The intermediate stages (compilation, bytecode, and PVM execution) remain hidden — the developer and user primarily see only the original source code and the eventual output.
+
+
++++
 
 
 This flow ensures that Python is platform-independent at the bytecode level, as any system with a compatible PVM can run the same bytecode.
