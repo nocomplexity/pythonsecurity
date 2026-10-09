@@ -18,6 +18,7 @@ project:
         - file: fundamentals/dependencies.md
         - file: fundamentals/homoglyphs.md
         - file: fundamentals/whatissast.md
+        - file: fundamentals/dast.md
         - file: fundamentals/pypi_security.md
         - file: fundamentals/enhancedsecurity.md
         - file: fundamentals/isolated_mode.md
