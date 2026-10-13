@@ -193,7 +193,7 @@ All limits are configurable, but **the defaults already provide conservative pro
 
 ## Discussion
 
-[]`fileaudit`](https://github.com/nocomplexity/fileaudit/tree/main) implements the timeout—along espcape. But also validates Python files on size, line-length, encoding, path-containment, and has AST-node guards—behind a simple decorator or function call. 
+[`fileaudit`](https://github.com/nocomplexity/fileaudit/tree/main) implements a needed timeout—along escape. But this library for validation Python files also validates Python files on size, line-length, encoding, path-containment, and has AST-node guards—behind a simple decorator or function call. 
 
 Adopting it restores the bounded-latency invariant and closes the DDoS vector without requiring every application to re-implement the same low-level signal handling itself.
 
