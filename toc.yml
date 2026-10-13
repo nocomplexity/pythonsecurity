@@ -82,6 +82,7 @@ project:
         - file: recipes/assert_use.md
         - file: recipes/data_egress.md
         - file: recipes/use_secrets.md
+        - file: recipes/check_on_pythonfile.md
 
     - title: Appendices #section header, no page
       children:
