@@ -132,6 +132,11 @@ The principal security challenges in the Python package ecosystem include:
 
 These threats cannot be solved by a single control.
 
+A key challenge is that there are no simple tools to validate whether a package on PyPI is 100% reproducible when built from its sources. Some researchers have tried to develop such a ‘reproducibility validation’ tool, but validating the reproducibility of Python packages that also depend on non-Python libraries remains a **real challenge**. 
+
+For purely Python packages, however, reproducibility validation is readily possible by comparing the hashes of all files with those used to create the package. [`Hatch`](https://hatch.pypa.io/latest/), a very good Python package tool, offers capabilities to create a reproducible package for pure Python packages. You can rebuild the source distribution (`sdist`) locally from the git repository and check if its SHA-256 hash matches the file served on PyPI.
+
+
 A mature Python software-supply-chain security strategy therefore combines several layers: carefully selecting dependencies, pinning versions where appropriate, reviewing important packages, keeping dependencies updated, using vulnerability information, protecting maintainer and CI/CD credentials, using Trusted Publishing where possible, verifying provenance and attestations where available, and using hash-locked installations for environments that require strict reproducibility.
 
 ## Summary
