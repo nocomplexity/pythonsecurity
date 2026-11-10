@@ -25,7 +25,6 @@ Potential security weaknesses associated with `ctypes` are:
 [Python Code Audit](https://nocomplexity.com/codeaudit/) checks for the use of the following native library-loading functions:
 
 - `ctypes.CDLL`
-- `ctypes.PyDLL`
 - `ctypes.WinDLL`
 - `ctypes.OleDLL`
 - `ctypes.windll.LoadLibrary`
