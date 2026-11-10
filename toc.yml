@@ -44,6 +44,7 @@ project:
         - file: constructs/input.md
         - file: constructs/builtins.md
         - file: constructs/chmod.md
+        - file: constructs/ctypes.md
         - file: constructs/binding.md
         - file: constructs/directorycreation.md
         - file: constructs/dynamicimports.md
