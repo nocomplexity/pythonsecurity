@@ -13,7 +13,7 @@ It is important to distinguish for `ctypes` the difference between a [**weakness
 
 The presence of a `ctypes` import or a native library-loading function does not, by itself, establish the existence of a vulnerability. It identifies functionality that may introduce security weaknesses and therefore deserves further investigation.
 
-Potential security weaknesses associated with `ctypes` include:
+Potential security weaknesses associated with `ctypes` are:
 
 - **Untrusted native libraries:** Loading native libraries from untrusted sources or locations can introduce malicious code into the application.
 - **Library hijacking:** Using relative paths or uncontrolled library search paths can allow an attacker to substitute a legitimate library with a malicious one.
@@ -123,7 +123,12 @@ Detecting the import of `ctypes` is therefore only a starting point. A more comp
 - Direct memory access using functions such as `string_at`, `wstring_at`, `memmove` and `memset`.
 - Pointer manipulation using functions such as `addressof`, `cast` and `from_address`.
 
-A security audit should also consider import aliases and dynamically imported modules. For example, `import ctypes as ct` should be recognised as ctypes usage.
+A security audit should also consider aliases when `ctypes` library loading calls are used  A good SAST scanner does this for you, so a good SAST scanner finds aliases like:
+
+```python
+from ctypes import CDLL as noevil
+safe_variable = noevil("mymalwarelib.so")
+```
 
 These findings indicate the presence of functionality that deserves security review. They should not automatically be classified as vulnerabilities.
 
@@ -151,6 +156,6 @@ Most Python SAST scanners have no default validation to detect the use of `ctype
 - [Analysis of APT37 NarwhalRAT Leveraging MS-Themed Phishing and Dead-drop C2](https://www.genians.co.kr/en/blog/threat_intelligence/narwhalrat)
 - [CVE-2026-102734 — National Vulnerability Database](https://nvd.nist.gov/vuln/detail/cve-2026-102734)
 - [CVE-2026-37008: CrewAI Python Sandbox Bypass RCE Vulnerability](https://www.sentinelone.com/vulnerability-database/cve-2026-37008/)
-- [Python Code Audit — GitHub repository](https://github.com/nocomplexity/codeaudit)
+
 
 
