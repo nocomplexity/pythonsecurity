@@ -14,9 +14,10 @@ short_title: Python Security Handbook
 
 Python plays a central role in modern computing, yet Python applications are not immune to cybersecurity threats. As a result, security has become a critical concern for developers and users alike.
 
-:::{tip} Welcome
-This book will give you a deep understanding of how to develop secure Python applications. It also equips you with the knowledge needed to assess the security of Python code written by others.
+:::{tip} Security Doesn't Have to Be Hard
+Transform how you write and review Python. Gain a deep, hands-on understanding of application security for Python and learn to catch flaws that even AI will miss before they reach production.
 :::
+
 
 ## Goal
 
