@@ -11,27 +11,12 @@ To make the development sustainable, we need users and companies, to support the
 Our content is free to read, but you can support us via a voluntary monthly subscription. We rely on ads and contributions to keep the lights on and expand our reach and impact. 
 
 
-## Become a sponsor
-
-As a free and open source project, you can sponsor our work to increase the audience for your commercial offerings.
-We’ve got an audience of thousands of adopters that read and use our online Playbooks.
-
-
-Please contact us by [using this page](https://nocomplexity.com/ads-and-sponsoring/) to discuss various options.
-
-:::{include} donate.md
-
-:::
-
-:::{raw:typst}
-*All sponsors will be visible in the online published version of the book.*
-
-:::
-
-
 +++{"no-pdf": true}
 
 ## Premium Sponsors
+
+We're grateful to the companies below for sponsoring this publication. Many of them also offer security consultancy or expert Python development services.
+
 
 ::::{grid} 2
 
@@ -66,6 +51,7 @@ Please contact us by [using this page](https://nocomplexity.com/ads-and-sponsori
 ::::
 
 +++
+% Above +++ is the END tag for {"no-pdf": true} 
 
 :::{raw:typst}
 Premium Sponsors:
@@ -74,5 +60,24 @@ Premium Sponsors:
 - https://organisatieontwerp.nl/
 
 
+:::
+
+
+
+## Become a sponsor
+
+As a free and open source project, you can sponsor our work to increase the audience for your commercial offerings.
+We’ve got an audience of thousands of adopters that read and use our online Playbooks.
+
+
+Please contact us by [using this page](https://nocomplexity.com/ads-and-sponsoring/) to discuss various options.
+
+:::{include} donate.md
 
 :::
+
+:::{raw:typst}
+*All sponsors will be visible in the online published version of the book.*
+
+:::
+
