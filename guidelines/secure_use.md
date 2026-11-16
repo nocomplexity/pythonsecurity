@@ -198,5 +198,21 @@ These features often share information about your system or activity without ful
 - Responsible projects provide a private reporting channel (e.g., email or “security.txt” or “security.md” file with instructions).
 - Security issues should **never** be reported publicly before they are fixed, to prevent exploitation.
 
++++
+
+
+### 6. **Check where the release came from**
+
+- Confirm that the files in the release come from a trustworthy source.
+- Verify any available attestation for the package. An attestation provides a verifiable record that the release file was built and published by the claimed source. This helps protect against account-takeover and supply-chain attacks.
+
+When a package is published on PyPI.org, this check is straightforward: the relevant information appears on the package’s **Security** tab.
+
+**Provenance** describes the origin of a release file. On PyPI, provenance is published as attestations.
+
+**What is an attestation?**  
+An attestation records how, when and where a package was built or published. Verifying it confirms that the file genuinely came from the source it claims. The presence of a valid attestation reduces the risk of account-takeover and supply-chain attacks.
+
+
 
 ![checklist_python_use](../images/checklist_python_use.png)
