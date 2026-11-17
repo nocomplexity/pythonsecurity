@@ -46,6 +46,9 @@ An external event, actor, or action that has the potential to exploit a vulnerab
 ### **Advanced Persistent Threat (APT)**  
 An Advanced Persistent Threat occurs when an attacker successfully compromises a network, establishes a long-term presence on one or more systems, and extracts data over an extended period. Some APTs eventually reveal themselves through destructive actions (e.g., WannaCry ransomware or Stuxnet), but most aim to remain undetected for as long as possible.
 
+### **Reproducible build**
+Reproducible builds are a set of software development practices that create an independently-verifiable path from source to binary code. Reproducible Builds provide certainty that software is genuine and has not been tampered with.
+
 ### **Static Application Security Testing (SAST)**  
 SAST is a white-box security testing methodology that analyses source code, documentation, and design artefacts for potential security weaknesses without executing the program. In Python projects, SAST tools scan code for risky patterns such as unsafe use of `eval()`, insecure deserialisation, or improper input validation.
 
