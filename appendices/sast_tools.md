@@ -71,11 +71,11 @@ The most important criteria for selecting a Static Application Security Testing 
 
 
 
-Additional important capabilities for Python SAST scanners
+Additional important capabilities for Python SAST scanners:
 
 | Additional SAST tool capabilities | Explanation |
 | :---- | :---- |
-| Simple CI integration | Integrates easily into CI/CD pipelines and standard code-quality workflows.. |
+| Simple CI integration | Integrates easily into CI/CD pipelines and standard code-quality workflows. |
 | Scans directly packages on PyPI.org | This feature saves time when deciding whether to adopt a new package from PyPI.&nbsp; |
 | Honours suppression markers in the code | Markers in the code indicate that the author was aware of the risks associated with a particular Python construct that may introduce a vulnerability. A good SAST scanner respects markers by default, but users can override this behaviour to review the findings and judge the risks for themselves. |
 | Scans [tar.gz](http://tar.gz) files (local or remote) | Many Python packages are not fully open source and a SAST scanner that can directly scan any `sdist` ([tar.gz](http://tar.gz)) file has numerous advantages. |
